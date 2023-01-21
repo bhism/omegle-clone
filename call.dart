@@ -1,6 +1,8 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
+import 'mainscreen.dart';
+
 class call extends StatefulWidget {
   String docid;
   DateTime now;
@@ -50,11 +52,17 @@ class _callState extends State<call> {
               MaterialButton(
                 height: 40,
                 onPressed: () {
-                  var d = '';
-                  setState(() {
-                    // d = name.text + now.toString();
-                  });
-                  print(d);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return VideoConferencePage(
+                          localUserID: docid,
+                          conferenceID: call.text,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Text(
                   "Join",
